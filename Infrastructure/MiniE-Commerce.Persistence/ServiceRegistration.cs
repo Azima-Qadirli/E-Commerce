@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using MiniE_Commerce.Application.Abstractions;
-using MiniE_Commerce.Persistence.Concretes;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MiniE_Commerce.Persistence.Contexts;
 
 namespace MiniE_Commerce.Persistence
 {
@@ -8,7 +8,7 @@ namespace MiniE_Commerce.Persistence
     {
         public static void AddPersistence(this IServiceCollection services)
         {
-            services.AddSingleton<IProductService, ProductService>();
+            services.AddDbContext<MiniE_CommerceDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
         }
     }
 }
