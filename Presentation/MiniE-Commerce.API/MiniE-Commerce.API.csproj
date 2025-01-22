@@ -20,8 +20,4 @@
     <ProjectReference Include="..\..\Infrastructure\MiniE-Commerce.Persistence\MiniE-Commerce.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
