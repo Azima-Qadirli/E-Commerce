@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiniE_Commerce.Application;
+using MiniE_Commerce.Domain.Entities;
 
 namespace MiniE_Commerce.API.Controllers
 {
@@ -16,7 +17,7 @@ namespace MiniE_Commerce.API.Controllers
             _productWriteRepository = productWriteRepository;
         }
         [HttpGet]
-        public async void Get()
+        public async Task Get()
         {
             await _productWriteRepository.AddRangeAsync(new()
             {
@@ -25,6 +26,12 @@ namespace MiniE_Commerce.API.Controllers
                 new() { Id = Guid.NewGuid(), Name = "Product 3", Price = 30, CreatedAt = DateTime.Now, Stock = 300},
             });
             await _productWriteRepository.SaveAsync();
+        }
+        [HttpGet("id")]
+        public async Task<IActionResult> Get(string id)
+        {
+            Product product = await _productReadRepository.GetByIdAsync(id);
+            return Ok(product);
         }
     }
 }
