@@ -1,3 +1,7 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using MiniE_Commerce.Application.Validators.Products;
+using MiniE_Commerce.Infrastructure.Filters;
 using MiniE_Commerce.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +11,14 @@ policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
 ));
 
 builder.Services.AddPersistence();
-builder.Services.AddControllers();
+builder.Services.AddControllers(options => options.Filters.Add<ValidationFilters>())
+    .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true);
+
+
+builder.Services.AddFluentValidationAutoValidation()
+    .AddFluentValidationClientsideAdapters()
+    .AddValidatorsFromAssemblyContaining<CreateProductValidator>();
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

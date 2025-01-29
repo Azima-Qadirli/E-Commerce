@@ -3,3 +3,6 @@ ONION architecture
 repository design pattern
 Cors policy
 what is tracking?
+
+Used validationFilters logic according to FluentValidation
+
