@@ -27,6 +27,7 @@ namespace MiniE_Commerce.Persistence.Contexts
                 {
                     EntityState.Added => data.Entity.CreatedAt = DateTime.UtcNow,
                     EntityState.Modified => data.Entity.UpdatedAt = DateTime.UtcNow,
+                    _ => DateTime.UtcNow
                 };
             }
 
