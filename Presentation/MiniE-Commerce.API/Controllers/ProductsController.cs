@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MiniE_Commerce.Application;
+using MiniE_Commerce.Application.Repositories;
+using MiniE_Commerce.Application.RequestParameters;
 using MiniE_Commerce.Application.ViewModels.Products;
 using MiniE_Commerce.Domain.Entities;
 using System.Net;
@@ -19,9 +20,24 @@ namespace MiniE_Commerce.API.Controllers
             _productWriteRepository = productWriteRepository;
         }
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] Pagination pagination)
         {
-            return Ok(_productReadRepository.GetAll(false));
+            var totalCount = _productReadRepository.GetAll(false).Count();
+            var products = _productReadRepository.GetAll(false).Skip(pagination.Size * pagination.Page).Take(pagination.Size).Select(p => new
+            {
+                p.Id,
+                p.Name,
+                p.Price,
+                p.Stock,
+                p.CreatedAt,
+                p.UpdatedAt
+            }).ToList();
+
+            return Ok(new
+            {
+                totalCount,
+                products
+            });
         }
 
         [HttpGet("{id}")]
