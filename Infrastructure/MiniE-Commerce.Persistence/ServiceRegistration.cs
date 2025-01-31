@@ -8,7 +8,7 @@ namespace MiniE_Commerce.Persistence
 {
     public static class ServiceRegistration
     {
-        public static void AddPersistence(this IServiceCollection services)
+        public static void AddPersistenceServices(this IServiceCollection services)
         {
             services.AddDbContext<MiniE_CommerceDbContext>(options => options.UseSqlServer(Configuration.ConnectionString));
             services.AddScoped<ICustomerReadRepository, CustomerReadRepository>();

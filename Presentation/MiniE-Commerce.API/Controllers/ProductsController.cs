@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiniE_Commerce.Application.Repositories;
 using MiniE_Commerce.Application.RequestParameters;
+using MiniE_Commerce.Application.Services;
 using MiniE_Commerce.Application.ViewModels.Products;
 using MiniE_Commerce.Domain.Entities;
 using System.Net;
@@ -14,12 +15,13 @@ namespace MiniE_Commerce.API.Controllers
         private readonly IProductReadRepository _productReadRepository;
         private readonly IProductWriteRepository _productWriteRepository;
         private readonly IWebHostEnvironment _hostingEnvironment;
-
-        public ProductsController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository, IWebHostEnvironment hostingEnvironment)
+        private readonly IFileService _fileService;
+        public ProductsController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository, IWebHostEnvironment hostingEnvironment, IFileService fileService)
         {
             _productReadRepository = productReadRepository;
             _productWriteRepository = productWriteRepository;
             _hostingEnvironment = hostingEnvironment;
+            _fileService = fileService;
         }
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] Pagination pagination)
@@ -78,22 +80,9 @@ namespace MiniE_Commerce.API.Controllers
         }
 
         [HttpPost("upload")]
-        public async Task<IActionResult> Upload(List<IFormFile> files)
+        public async Task<IActionResult> Upload()
         {
-            //wwwroot/resource/product-images
-            string uploadPath = Path.Combine(_hostingEnvironment.WebRootPath, "resource/product-images");
-            if (!Directory.Exists(uploadPath))
-                Directory.CreateDirectory(uploadPath);
-
-            Random random = new();
-            foreach (IFormFile file in files)
-            {
-                string fullPath = Path.Combine(uploadPath, $"{random.Next()}{Path.GetExtension(file.FileName)}");
-                using FileStream fileStream = new(fullPath, FileMode.Create, FileAccess.Write, FileShare.None, 1024 * 1024, useAsync: false);
-
-                await file.CopyToAsync(fileStream);
-                await fileStream.FlushAsync();
-            }
+            await _fileService.UploadAsync("resource/product-images", Request.Form.Files);
             return Ok();
         }
     }
