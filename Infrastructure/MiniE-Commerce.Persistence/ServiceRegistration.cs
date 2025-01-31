@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MiniE_Commerce.Application.Repositories.Customer;
-using MiniE_Commerce.Application.Repositories.Order;
-using MiniE_Commerce.Application.Repositories.Product;
+using MiniE_Commerce.Application.Repositories;
 using MiniE_Commerce.Persistence.Contexts;
 using MiniE_Commerce.Persistence.Repositories;
 
