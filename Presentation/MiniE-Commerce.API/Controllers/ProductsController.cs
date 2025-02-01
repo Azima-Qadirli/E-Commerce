@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiniE_Commerce.Application.Repositories;
+using MiniE_Commerce.Application.Repositories.File;
+using MiniE_Commerce.Application.Repositories.InvoiceFile;
+using MiniE_Commerce.Application.Repositories.ProductImageFile;
 using MiniE_Commerce.Application.RequestParameters;
 using MiniE_Commerce.Application.Services;
 using MiniE_Commerce.Application.ViewModels.Products;
@@ -16,13 +19,27 @@ namespace MiniE_Commerce.API.Controllers
         private readonly IProductWriteRepository _productWriteRepository;
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IFileService _fileService;
-        public ProductsController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository, IWebHostEnvironment hostingEnvironment, IFileService fileService)
+        readonly private IFileReadRepository _fileReadRepository;
+        private readonly IFileWriteRepository _fileWriteRepository;
+        private readonly IProductImageFileReadRepository _productImageFileReadRepository;
+        private readonly IProductImageFileWriteRepository _productImageFileWriteRepository;
+        private readonly IInvoiceFileReadRepository _invoiceFileReadRepository;
+        private readonly IInvoiceFileWriteRepository _invoiceFileWriteRepository;
+
+        public ProductsController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository, IWebHostEnvironment hostingEnvironment, IFileService fileService, IFileReadRepository fileReadRepository, IFileWriteRepository fileWriteRepository, IProductImageFileReadRepository productImageFileReadRepository, IProductImageFileWriteRepository productImageFileWriteRepository, IInvoiceFileReadRepository invoiceFileReadRepository, IInvoiceFileWriteRepository invoiceFileWriteRepository)
         {
             _productReadRepository = productReadRepository;
             _productWriteRepository = productWriteRepository;
             _hostingEnvironment = hostingEnvironment;
             _fileService = fileService;
+            _fileReadRepository = fileReadRepository;
+            _fileWriteRepository = fileWriteRepository;
+            _productImageFileReadRepository = productImageFileReadRepository;
+            _productImageFileWriteRepository = productImageFileWriteRepository;
+            _invoiceFileReadRepository = invoiceFileReadRepository;
+            _invoiceFileWriteRepository = invoiceFileWriteRepository;
         }
+
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] Pagination pagination)
         {
@@ -82,7 +99,32 @@ namespace MiniE_Commerce.API.Controllers
         [HttpPost("upload")]
         public async Task<IActionResult> Upload()
         {
-            await _fileService.UploadAsync("resource/product-images", Request.Form.Files);
+            var data = await _fileService.UploadAsync("resource/product-images", Request.Form.Files);
+            //await  _productImageFileWriteRepository.AddRangeAsync(data.Select(d => new ProductImageFile()
+            // {
+            //     FileName = d.fileName,
+            //     Path = d.path
+            // }).ToList());
+            // await _productImageFileWriteRepository.SaveAsync();
+
+            //await _invoiceFileWriteRepository.AddRangeAsync(data.Select(d => new InvoiceFile()
+            //{
+            //    FileName = d.fileName,
+            //    Path = d.path,
+            //    Price = new Random().Next()
+            //}).ToList());
+            //await _invoiceFileWriteRepository.SaveAsync();
+
+            //await _fileWriteRepository.AddRangeAsync(data.Select(d => new MiniE_Commerce.Domain.Entities.File()
+            //{
+            //    FileName = d.fileName,
+            //    Path = d.path
+            //}).ToList());
+            //await _fileWriteRepository.SaveAsync();
+
+            var d1 = _fileReadRepository.GetAll(false);
+            var d2 = _productImageFileReadRepository.GetAll(false);
+            var d3 = _invoiceFileReadRepository.GetAll(false);
             return Ok();
         }
     }
