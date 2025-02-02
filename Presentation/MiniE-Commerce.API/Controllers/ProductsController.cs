@@ -4,7 +4,6 @@ using MiniE_Commerce.Application.Repositories.File;
 using MiniE_Commerce.Application.Repositories.InvoiceFile;
 using MiniE_Commerce.Application.Repositories.ProductImageFile;
 using MiniE_Commerce.Application.RequestParameters;
-using MiniE_Commerce.Application.Services;
 using MiniE_Commerce.Application.ViewModels.Products;
 using MiniE_Commerce.Domain.Entities;
 using System.Net;
@@ -18,7 +17,6 @@ namespace MiniE_Commerce.API.Controllers
         private readonly IProductReadRepository _productReadRepository;
         private readonly IProductWriteRepository _productWriteRepository;
         private readonly IWebHostEnvironment _hostingEnvironment;
-        private readonly IFileService _fileService;
         readonly private IFileReadRepository _fileReadRepository;
         private readonly IFileWriteRepository _fileWriteRepository;
         private readonly IProductImageFileReadRepository _productImageFileReadRepository;
@@ -26,12 +24,11 @@ namespace MiniE_Commerce.API.Controllers
         private readonly IInvoiceFileReadRepository _invoiceFileReadRepository;
         private readonly IInvoiceFileWriteRepository _invoiceFileWriteRepository;
 
-        public ProductsController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository, IWebHostEnvironment hostingEnvironment, IFileService fileService, IFileReadRepository fileReadRepository, IFileWriteRepository fileWriteRepository, IProductImageFileReadRepository productImageFileReadRepository, IProductImageFileWriteRepository productImageFileWriteRepository, IInvoiceFileReadRepository invoiceFileReadRepository, IInvoiceFileWriteRepository invoiceFileWriteRepository)
+        public ProductsController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository, IWebHostEnvironment hostingEnvironment, IFileReadRepository fileReadRepository, IFileWriteRepository fileWriteRepository, IProductImageFileReadRepository productImageFileReadRepository, IProductImageFileWriteRepository productImageFileWriteRepository, IInvoiceFileReadRepository invoiceFileReadRepository, IInvoiceFileWriteRepository invoiceFileWriteRepository)
         {
             _productReadRepository = productReadRepository;
             _productWriteRepository = productWriteRepository;
             _hostingEnvironment = hostingEnvironment;
-            _fileService = fileService;
             _fileReadRepository = fileReadRepository;
             _fileWriteRepository = fileWriteRepository;
             _productImageFileReadRepository = productImageFileReadRepository;
@@ -99,7 +96,7 @@ namespace MiniE_Commerce.API.Controllers
         [HttpPost("upload")]
         public async Task<IActionResult> Upload()
         {
-            var data = await _fileService.UploadAsync("resource/product-images", Request.Form.Files);
+            // var data = await _fileService.UploadAsync("resource/product-images", Request.Form.Files);
             //await  _productImageFileWriteRepository.AddRangeAsync(data.Select(d => new ProductImageFile()
             // {
             //     FileName = d.fileName,

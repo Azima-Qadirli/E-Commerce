@@ -3,6 +3,7 @@ using FluentValidation.AspNetCore;
 using MiniE_Commerce.Application.Validators.Products;
 using MiniE_Commerce.Infrastructure;
 using MiniE_Commerce.Infrastructure.Filters;
+using MiniE_Commerce.Infrastructure.Services.Storage.Local;
 using MiniE_Commerce.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,9 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
 policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
 ));
+
 //Adding Services
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
+
+//Adding Storage
+builder.Services.AddStorage<LocalStorage>();
 
 //Adding FluentValidation
 builder.Services.AddControllers(options => options.Filters.Add<ValidationFilters>())
@@ -20,7 +25,6 @@ builder.Services.AddControllers(options => options.Filters.Add<ValidationFilters
 builder.Services.AddFluentValidationAutoValidation()
     .AddFluentValidationClientsideAdapters()
     .AddValidatorsFromAssemblyContaining<CreateProductValidator>();
-
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -36,9 +40,6 @@ if (app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseCors();
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
