@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MiniE_Commerce.Persistence.Contexts;
 
@@ -11,9 +12,11 @@ using MiniE_Commerce.Persistence.Contexts;
 namespace MiniE_Commerce.Persistence.Migrations
 {
     [DbContext(typeof(MiniE_CommerceDbContext))]
-    partial class MiniE_CommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250203220032_mig_5")]
+    partial class mig_5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,21 +153,6 @@ namespace MiniE_Commerce.Persistence.Migrations
                     b.ToTable("OrderProduct");
                 });
 
-            modelBuilder.Entity("ProductProductImageFile", b =>
-                {
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ProductImageFilesId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ProductId", "ProductImageFilesId");
-
-                    b.HasIndex("ProductImageFilesId");
-
-                    b.ToTable("ProductProductImageFile");
-                });
-
             modelBuilder.Entity("MiniE_Commerce.Domain.Entities.InvoiceFile", b =>
                 {
                     b.HasBaseType("MiniE_Commerce.Domain.Entities.File");
@@ -178,6 +166,11 @@ namespace MiniE_Commerce.Persistence.Migrations
             modelBuilder.Entity("MiniE_Commerce.Domain.Entities.ProductImageFile", b =>
                 {
                     b.HasBaseType("MiniE_Commerce.Domain.Entities.File");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasIndex("ProductId");
 
                     b.HasDiscriminator().HasValue("ProductImageFile");
                 });
@@ -208,24 +201,25 @@ namespace MiniE_Commerce.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProductProductImageFile", b =>
+            modelBuilder.Entity("MiniE_Commerce.Domain.Entities.ProductImageFile", b =>
                 {
-                    b.HasOne("MiniE_Commerce.Domain.Entities.Product", null)
-                        .WithMany()
+                    b.HasOne("MiniE_Commerce.Domain.Entities.Product", "Product")
+                        .WithMany("ProductImageFiles")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MiniE_Commerce.Domain.Entities.ProductImageFile", null)
-                        .WithMany()
-                        .HasForeignKey("ProductImageFilesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Customer", b =>
                 {
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Product", b =>
+                {
+                    b.Navigation("ProductImageFiles");
                 });
 #pragma warning restore 612, 618
         }
