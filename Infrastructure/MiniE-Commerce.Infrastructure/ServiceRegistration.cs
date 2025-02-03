@@ -2,6 +2,7 @@
 using MiniE_Commerce.Application.Abstractions.Storage;
 using MiniE_Commerce.Infrastructure.Enums;
 using MiniE_Commerce.Infrastructure.Services.Storage;
+using MiniE_Commerce.Infrastructure.Services.Storage.Azure;
 using MiniE_Commerce.Infrastructure.Services.Storage.Local;
 
 namespace MiniE_Commerce.Infrastructure
@@ -24,6 +25,7 @@ namespace MiniE_Commerce.Infrastructure
                     serviceCollection.AddScoped<IStorage, LocalStorage>();
                     break;
                 case StorageType.Azure:
+                    serviceCollection.AddScoped<IStorage, AzureStorage>();
                     break;
                 case StorageType.AWS:
                     break;

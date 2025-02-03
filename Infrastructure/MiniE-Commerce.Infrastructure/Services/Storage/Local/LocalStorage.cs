@@ -4,7 +4,7 @@ using MiniE_Commerce.Application.Abstractions.Storage.Local;
 
 namespace MiniE_Commerce.Infrastructure.Services.Storage.Local
 {
-    public class LocalStorage : ILocalStorage
+    public class LocalStorage : Storage, ILocalStorage
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
 
@@ -52,8 +52,10 @@ namespace MiniE_Commerce.Infrastructure.Services.Storage.Local
 
             foreach (IFormFile file in files)
             {
-                await CopyFileAsync($"{uploadPath}\\{file.Name}", file);
-                data.Add((file.Name, $"{uploadPath}\\{file.Name}"));
+                string fileNewName = await FileRenameAsync(path, file.Name, HasFiles);
+
+                await CopyFileAsync($"{uploadPath}\\{fileNewName}", file);
+                data.Add((fileNewName, $"{uploadPath}\\{fileNewName}"));
 
             }
             return data;
