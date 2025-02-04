@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MiniE_Commerce.Application.Repositories;
 using MiniE_Commerce.Application.Repositories.File;
 using MiniE_Commerce.Application.Repositories.InvoiceFile;
@@ -23,8 +24,9 @@ namespace MiniE_Commerce.API.Controllers
         private readonly IProductImageFileWriteRepository _productImageFileWriteRepository;
         private readonly IInvoiceFileReadRepository _invoiceFileReadRepository;
         private readonly IInvoiceFileWriteRepository _invoiceFileWriteRepository;
+        readonly IConfiguration _configuration;
 
-        public ProductsController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository, IWebHostEnvironment hostingEnvironment, IFileReadRepository fileReadRepository, IFileWriteRepository fileWriteRepository, IProductImageFileReadRepository productImageFileReadRepository, IProductImageFileWriteRepository productImageFileWriteRepository, IInvoiceFileReadRepository invoiceFileReadRepository, IInvoiceFileWriteRepository invoiceFileWriteRepository)
+        public ProductsController(IProductReadRepository productReadRepository, IProductWriteRepository productWriteRepository, IWebHostEnvironment hostingEnvironment, IFileReadRepository fileReadRepository, IFileWriteRepository fileWriteRepository, IProductImageFileReadRepository productImageFileReadRepository, IProductImageFileWriteRepository productImageFileWriteRepository, IInvoiceFileReadRepository invoiceFileReadRepository, IInvoiceFileWriteRepository invoiceFileWriteRepository, IConfiguration configuration)
         {
             _productReadRepository = productReadRepository;
             _productWriteRepository = productWriteRepository;
@@ -35,6 +37,7 @@ namespace MiniE_Commerce.API.Controllers
             _productImageFileWriteRepository = productImageFileWriteRepository;
             _invoiceFileReadRepository = invoiceFileReadRepository;
             _invoiceFileWriteRepository = invoiceFileWriteRepository;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -119,10 +122,21 @@ namespace MiniE_Commerce.API.Controllers
             //}).ToList());
             //await _fileWriteRepository.SaveAsync();
 
-            var d1 = _fileReadRepository.GetAll(false);
-            var d2 = _productImageFileReadRepository.GetAll(false);
-            var d3 = _invoiceFileReadRepository.GetAll(false);
+            //var d1 = _fileReadRepository.GetAll(false);
+            //var d2 = _productImageFileReadRepository.GetAll(false);
+            //var d3 = _invoiceFileReadRepository.GetAll(false);
             return Ok();
+        }
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetProductImages(string id)
+        {
+            Product? product = await _productReadRepository.Table.Include(p => p.ProductImageFiles)
+                 .FirstOrDefaultAsync(p => p.Id == Guid.Parse(id));
+            return Ok(product.ProductImageFiles.Select(p => new
+            {
+                Path = $"{_configuration["BaseStorageUrl"]}/{p.Path}",
+                p.FileName
+            }));
         }
     }
 }
