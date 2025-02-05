@@ -6,3 +6,5 @@ what is tracking?
 Pagination
 Used validationFilters logic according to FluentValidation
 Table Per Hierarchy
+CQRS pattern
+Mediator pattern

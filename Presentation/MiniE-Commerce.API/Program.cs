@@ -1,5 +1,6 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MiniE_Commerce.Application;
 using MiniE_Commerce.Application.Validators.Products;
 using MiniE_Commerce.Infrastructure;
 using MiniE_Commerce.Infrastructure.Filters;
@@ -15,6 +16,7 @@ policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
 //Adding Services
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
+builder.Services.AddApplicationServices();
 
 //Adding Storage
 builder.Services.AddStorage<LocalStorage>();
