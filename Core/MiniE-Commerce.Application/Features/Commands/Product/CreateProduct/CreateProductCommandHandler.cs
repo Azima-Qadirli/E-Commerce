@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using MiniE_Commerce.Application.Repositories;
 
-namespace MiniE_Commerce.Application.Features.Commands.CreateProduct
+namespace MiniE_Commerce.Application.Features.Commands.Product.CreateProduct
 {
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, CreateProductCommandResponse>
     {

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace MiniE_Commerce.Application.Features.Queries.GetAllProduct
+namespace MiniE_Commerce.Application.Features.Queries.Product.GetAllProduct
 {
     public class GetAllProductQueryRequest : IRequest<GetAllProductQueryResponse>
     {

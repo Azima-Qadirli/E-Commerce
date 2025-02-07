@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using MiniE_Commerce.Application.Repositories;
 
-namespace MiniE_Commerce.Application.Features.Queries.GetAllProduct
+namespace MiniE_Commerce.Application.Features.Queries.Product.GetAllProduct
 {
     public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQueryRequest, GetAllProductQueryResponse>
     {

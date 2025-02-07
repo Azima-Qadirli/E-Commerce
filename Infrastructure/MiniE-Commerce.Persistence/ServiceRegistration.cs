@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MiniE_Commerce.Application.Repositories;
 using MiniE_Commerce.Application.Repositories.File;
 using MiniE_Commerce.Application.Repositories.InvoiceFile;
+using MiniE_Commerce.Application.Repositories.ProductImageFile;
 using MiniE_Commerce.Persistence.Contexts;
 using MiniE_Commerce.Persistence.Repositories;
 
@@ -21,6 +22,9 @@ namespace MiniE_Commerce.Persistence
 
             services.AddScoped<IProductReadRepository, ProductReadRepository>();
             services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
+
+            services.AddScoped<IProductImageFileReadRepository, ProductImageFileReadRepository>();
+            services.AddScoped<IProductImageFileWriteRepository, ProductImageFileWriteRepository>();
 
             services.AddScoped<IFileReadRepository, FileReadRepository>();
             services.AddScoped<IFileWriteRepository, FileWriteRepository>();
