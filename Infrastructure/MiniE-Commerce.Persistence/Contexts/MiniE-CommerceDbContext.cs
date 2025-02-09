@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using MiniE_Commerce.Domain.Entities;
 using MiniE_Commerce.Domain.Entities.Common;
+using MiniE_Commerce.Domain.Entities.Identity;
 
 namespace MiniE_Commerce.Persistence.Contexts
 {
-    public class MiniE_CommerceDbContext : DbContext
+    public class MiniE_CommerceDbContext : IdentityDbContext<AppUser, AppRole, string>
     {
         public MiniE_CommerceDbContext(DbContextOptions options) : base(options)
         {
