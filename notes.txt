@@ -9,3 +9,4 @@ Table Per Hierarchy
 CQRS pattern
 Mediator pattern
 GoogleLogin
+FaceBookLogin
