@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MiniE_Commerce.Persistence.Contexts;
 
@@ -11,9 +12,11 @@ using MiniE_Commerce.Persistence.Contexts;
 namespace MiniE_Commerce.Persistence.Migrations
 {
     [DbContext(typeof(MiniE_CommerceDbContext))]
-    partial class MiniE_CommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250211214029_mig_8")]
+    partial class mig_8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -146,7 +149,7 @@ namespace MiniE_Commerce.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("MiniE_Commerce.Domain.Entities.File", b =>
@@ -177,7 +180,7 @@ namespace MiniE_Commerce.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Files", (string)null);
+                    b.ToTable("Files");
 
                     b.HasDiscriminator().HasValue("File");
 
@@ -313,7 +316,7 @@ namespace MiniE_Commerce.Persistence.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Product", b =>
@@ -340,7 +343,7 @@ namespace MiniE_Commerce.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("OrderProduct", b =>
@@ -355,7 +358,7 @@ namespace MiniE_Commerce.Persistence.Migrations
 
                     b.HasIndex("ProductsId");
 
-                    b.ToTable("OrderProduct", (string)null);
+                    b.ToTable("OrderProduct");
                 });
 
             modelBuilder.Entity("ProductProductImageFile", b =>
@@ -370,7 +373,7 @@ namespace MiniE_Commerce.Persistence.Migrations
 
                     b.HasIndex("ProductsId");
 
-                    b.ToTable("ProductProductImageFile", (string)null);
+                    b.ToTable("ProductProductImageFile");
                 });
 
             modelBuilder.Entity("MiniE_Commerce.Domain.Entities.InvoiceFile", b =>

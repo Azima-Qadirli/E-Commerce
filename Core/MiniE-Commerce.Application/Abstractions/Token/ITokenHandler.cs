@@ -3,5 +3,6 @@
     public interface ITokenHandler
     {
         DTO.Token CreateAccessToken(int second);
+        string CreateRefreshToken();
     }
 }

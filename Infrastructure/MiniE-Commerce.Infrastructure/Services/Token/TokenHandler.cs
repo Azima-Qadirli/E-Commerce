@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using MiniE_Commerce.Application.Abstractions.Token;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace MiniE_Commerce.Infrastructure.Services.Token
@@ -26,7 +27,7 @@ namespace MiniE_Commerce.Infrastructure.Services.Token
             SigningCredentials signingCredentials = new(securityKey, SecurityAlgorithms.HmacSha256);
 
             //We provide the settings for the token to be created.
-            token.Expiration = DateTime.UtcNow.AddMinutes(second);
+            token.Expiration = DateTime.UtcNow.AddSeconds(second);
             JwtSecurityToken securityToken = new(
                 audience: _configuration["Token:Audience"],
                 issuer: _configuration["Token:Issuer"],
@@ -37,7 +38,17 @@ namespace MiniE_Commerce.Infrastructure.Services.Token
 
             JwtSecurityTokenHandler tokenHandler = new();
             token.AccessToken = tokenHandler.WriteToken(securityToken);
+
+            token.RefreshToken = CreateRefreshToken();
             return token;
+        }
+
+        public string CreateRefreshToken()
+        {
+            byte[] number = new byte[32];
+            using RandomNumberGenerator random = RandomNumberGenerator.Create();
+            random.GetBytes(number);
+            return Convert.ToBase64String(number);
         }
     }
 }
