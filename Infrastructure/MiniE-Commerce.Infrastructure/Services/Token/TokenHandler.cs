@@ -15,7 +15,7 @@ namespace MiniE_Commerce.Infrastructure.Services.Token
             _configuration = configuration;
         }
 
-        public Application.DTO.Token CreateAccessToken(int minute)
+        public Application.DTO.Token CreateAccessToken(int second)
         {
             Application.DTO.Token token = new();
 
@@ -26,7 +26,7 @@ namespace MiniE_Commerce.Infrastructure.Services.Token
             SigningCredentials signingCredentials = new(securityKey, SecurityAlgorithms.HmacSha256);
 
             //We provide the settings for the token to be created.
-            token.Expiration = DateTime.UtcNow.AddMinutes(minute);
+            token.Expiration = DateTime.UtcNow.AddMinutes(second);
             JwtSecurityToken securityToken = new(
                 audience: _configuration["Token:Audience"],
                 issuer: _configuration["Token:Issuer"],

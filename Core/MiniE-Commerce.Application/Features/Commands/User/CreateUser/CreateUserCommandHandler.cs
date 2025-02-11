@@ -1,36 +1,33 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
-using MiniE_Commerce.Domain.Entities.Identity;
+using MiniE_Commerce.Application.Abstractions.Services;
+using MiniE_Commerce.Application.DTO.User;
 
 namespace MiniE_Commerce.Application.Features.Commands.User.CreateUser
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommandRequest, CreateUserCommandResponse>
     {
-        readonly UserManager<AppUser> _userManager;
+        readonly IUserService _userService;
 
-        public CreateUserCommandHandler(UserManager<AppUser> userManager)
+        public CreateUserCommandHandler(IUserService userService)
         {
-            _userManager = userManager;
+            _userService = userService;
         }
 
         public async Task<CreateUserCommandResponse> Handle(CreateUserCommandRequest request, CancellationToken cancellationToken)
         {
-            IdentityResult result = await _userManager.CreateAsync(new()
+            CreateUserResponse response = await _userService.CreateAsync(new()
             {
-                Id = Guid.NewGuid().ToString(),
-                NameSurname = request.NameSurname,
                 Email = request.Email,
+                NameSurname = request.NameSurname,
+                Password = request.Password,
                 UserName = request.UserName,
-            }, request.Password);
-
-            CreateUserCommandResponse response = new() { Succeeded = result.Succeeded };
-
-            if (result.Succeeded)
-                response.Message = "User is created successfully!";
-            else
-                foreach (var error in result.Errors)
-                    response.Message += $"{error.Code} - {error.Description}";
-            return response;
+                PasswordConfirm = request.PasswordConfirm
+            });
+            return new()
+            {
+                Message = response.Message,
+                Succeeded = response.Succeeded
+            };
 
             //throw new CreateUserFailedException();
         }
