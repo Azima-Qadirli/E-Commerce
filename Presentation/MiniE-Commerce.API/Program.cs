@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.IdentityModel.Tokens;
 using MiniE_Commerce.API.Configurations.ColumnWriters;
+using MiniE_Commerce.API.Extensions;
 using MiniE_Commerce.Application;
 using MiniE_Commerce.Application.Validators.Products;
 using MiniE_Commerce.Infrastructure;
@@ -112,6 +113,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.ConfigureExceptionHandler<Program>(app.Services.GetRequiredService<ILogger<Program>>());
 app.UseStaticFiles();
 app.UseCors();
 app.UseHttpsRedirection();
