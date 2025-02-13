@@ -1,0 +1,7 @@
+﻿namespace MiniE_Commerce.SignalR
+{
+    public static class ReceiveFunctionNames
+    {
+        public const string ProductAddedMessage = "receiveProductAddedMessage";
+    }
+}

@@ -14,7 +14,7 @@ namespace MiniE_Commerce.Application.Features.Commands.User.LoginUser
 
         public async Task<LoginUserCommandResponse> Handle(LoginUserCommandRequest request, CancellationToken cancellationToken)
         {
-            var token = await _authService.LoginAsync(request.UserNameOrEmail, request.Password, 15);
+            var token = await _authService.LoginAsync(request.UserNameOrEmail, request.Password, 900);
             return new LoginUserSuccessCommandResponse()
             {
                 Token = token

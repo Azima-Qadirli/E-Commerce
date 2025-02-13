@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniE-Commerce.API", "Presentation\MiniE-Commerce.API\MiniE-Commerce.API.csproj", "{0D849E3A-E919-4B4E-8BFB-2A65BABB5B29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniE-Commerce.SignalR", "Infrastructure\MiniE-Commerce.SignalR\MiniE-Commerce.SignalR.csproj", "{362C66AB-9DC8-46C2-866B-BF270A0BB51F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{0D849E3A-E919-4B4E-8BFB-2A65BABB5B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D849E3A-E919-4B4E-8BFB-2A65BABB5B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D849E3A-E919-4B4E-8BFB-2A65BABB5B29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{362C66AB-9DC8-46C2-866B-BF270A0BB51F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{362C66AB-9DC8-46C2-866B-BF270A0BB51F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{362C66AB-9DC8-46C2-866B-BF270A0BB51F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{362C66AB-9DC8-46C2-866B-BF270A0BB51F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,5 +61,6 @@ Global
 		{E96F5FDA-82AF-4EA7-BAE3-4134767C0C5B} = {29E2EF65-16F0-404C-A07B-5EFBA36FDC4D}
 		{3D13BE29-A768-48C0-8418-48CE4EC337E5} = {29E2EF65-16F0-404C-A07B-5EFBA36FDC4D}
 		{0D849E3A-E919-4B4E-8BFB-2A65BABB5B29} = {1B8FD48D-2CFD-47F3-B174-4A173C675CF9}
+		{362C66AB-9DC8-46C2-866B-BF270A0BB51F} = {29E2EF65-16F0-404C-A07B-5EFBA36FDC4D}
 	EndGlobalSection
 EndGlobal

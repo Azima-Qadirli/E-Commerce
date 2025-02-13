@@ -11,6 +11,7 @@ using MiniE_Commerce.Infrastructure;
 using MiniE_Commerce.Infrastructure.Filters;
 using MiniE_Commerce.Infrastructure.Services.Storage.Local;
 using MiniE_Commerce.Persistence;
+using MiniE_Commerce.SignalR;
 using Serilog;
 using Serilog.Context;
 using Serilog.Core;
@@ -22,13 +23,14 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
-policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials()
 ));
 
 //Adding Services
 builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddApplicationServices();
+builder.Services.AddSignalRServices();
 
 //Adding Storage
 builder.Services.AddStorage<LocalStorage>();
@@ -126,6 +128,6 @@ app.Use(async (context, next) =>
     LogContext.PushProperty("Username", username);
     await next();
 });
-
+app.MapHubs();
 app.MapControllers();
 app.Run();
