@@ -11,3 +11,4 @@ Mediator pattern
 GoogleLogin
 FaceBookLogin
 Logging with Serilog
+SignalR
