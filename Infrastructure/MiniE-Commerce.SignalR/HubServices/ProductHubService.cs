@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using MiniE_Commerce.Application.Abstractions.Hubs;
+using MiniE_Commerce.SignalR.Hubs;
 
 namespace MiniE_Commerce.SignalR.HubServices
 {
     public class ProductHubService : IProductHubService
     {
-        readonly IHubContext _context;
+        readonly IHubContext<ProductHub> _context;
 
-        public ProductHubService(IHubContext context)
+        public ProductHubService(IHubContext<ProductHub> context)
         {
             _context = context;
         }

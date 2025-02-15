@@ -12,8 +12,8 @@ using MiniE_Commerce.Persistence.Contexts;
 namespace MiniE_Commerce.Persistence.Migrations
 {
     [DbContext(typeof(MiniE_CommerceDbContext))]
-    [Migration("20250214131242_mig_9")]
-    partial class mig_9
+    [Migration("20250215195907_mig_1")]
+    partial class mig_1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -129,6 +129,62 @@ namespace MiniE_Commerce.Persistence.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Basket", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Baskets");
+                });
+
+            modelBuilder.Entity("MiniE_Commerce.Domain.Entities.BasketItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BasketId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BasketId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("BasketItems");
                 });
 
             modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Customer", b =>
@@ -292,7 +348,6 @@ namespace MiniE_Commerce.Persistence.Migrations
             modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Order", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
@@ -447,6 +502,36 @@ namespace MiniE_Commerce.Persistence.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Basket", b =>
+                {
+                    b.HasOne("MiniE_Commerce.Domain.Entities.Identity.AppUser", "User")
+                        .WithMany("Baskets")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MiniE_Commerce.Domain.Entities.BasketItem", b =>
+                {
+                    b.HasOne("MiniE_Commerce.Domain.Entities.Basket", "Basket")
+                        .WithMany("BasketItems")
+                        .HasForeignKey("BasketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MiniE_Commerce.Domain.Entities.Product", "Product")
+                        .WithMany("BasketItems")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Basket");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Order", b =>
                 {
                     b.HasOne("MiniE_Commerce.Domain.Entities.Customer", "Customer")
@@ -454,6 +539,14 @@ namespace MiniE_Commerce.Persistence.Migrations
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("MiniE_Commerce.Domain.Entities.Basket", "Basket")
+                        .WithOne("Order")
+                        .HasForeignKey("MiniE_Commerce.Domain.Entities.Order", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Basket");
 
                     b.Navigation("Customer");
                 });
@@ -488,9 +581,27 @@ namespace MiniE_Commerce.Persistence.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Basket", b =>
+                {
+                    b.Navigation("BasketItems");
+
+                    b.Navigation("Order")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Customer", b =>
                 {
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Identity.AppUser", b =>
+                {
+                    b.Navigation("Baskets");
+                });
+
+            modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Product", b =>
+                {
+                    b.Navigation("BasketItems");
                 });
 #pragma warning restore 612, 618
         }

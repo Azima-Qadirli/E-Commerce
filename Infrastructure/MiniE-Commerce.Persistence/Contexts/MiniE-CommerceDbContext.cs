@@ -17,6 +17,8 @@ namespace MiniE_Commerce.Persistence.Contexts
         public DbSet<Domain.Entities.File> Files { get; set; }
         public DbSet<InvoiceFile> InvoiceFiles { get; set; }
         public DbSet<ProductImageFile> ProductImageFiles { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -36,6 +38,22 @@ namespace MiniE_Commerce.Persistence.Contexts
             }
 
             return await base.SaveChangesAsync(cancellationToken);
+
+
         }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Order>()
+                .HasKey(b => b.Id);
+
+            builder.Entity<Basket>()
+                .HasOne(b => b.Order)
+                .WithOne(o => o.Basket)
+                .HasForeignKey<Order>(b => b.Id);
+
+            base.OnModelCreating(builder);
+        }
+
+
     }
 }

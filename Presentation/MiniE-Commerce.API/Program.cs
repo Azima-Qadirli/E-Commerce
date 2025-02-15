@@ -23,7 +23,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
-policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials()
+policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
 ));
 
 //Adding Services
@@ -31,7 +31,7 @@ builder.Services.AddPersistenceServices();
 builder.Services.AddInfrastructureServices();
 builder.Services.AddApplicationServices();
 builder.Services.AddSignalRServices();
-
+builder.Services.AddHttpContextAccessor();
 //Adding Storage
 builder.Services.AddStorage<LocalStorage>();
 

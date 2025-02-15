@@ -6,10 +6,10 @@ namespace MiniE_Commerce.SignalR
 {
     public static class ServiceRegistration
     {
-        public static void AddSignalRServices(this IServiceCollection collection)
+        public static void AddSignalRServices(this IServiceCollection services)
         {
-            collection.AddTransient<IProductHubService, ProductHubService>();
-            collection.AddSignalR();
+            services.AddTransient<IProductHubService, ProductHubService>();
+            services.AddSignalR();
         }
 
     }

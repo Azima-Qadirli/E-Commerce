@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MiniE_Commerce.Application.Abstractions.Services;
 using MiniE_Commerce.Application.Abstractions.Services.Authentications;
 using MiniE_Commerce.Application.Repositories;
+using MiniE_Commerce.Application.Repositories.Baskets;
 using MiniE_Commerce.Application.Repositories.File;
 using MiniE_Commerce.Application.Repositories.InvoiceFile;
 using MiniE_Commerce.Application.Repositories.ProductImageFile;
@@ -48,11 +49,19 @@ namespace MiniE_Commerce.Persistence
             services.AddScoped<IInvoiceFileReadRepository, InvoiceFileReadRepository>();
             services.AddScoped<IInvoiceFileWriteRepository, InvoiceFileWriteRepository>();
 
+            services.AddScoped<IBasketReadRepository, BasketReadRepository>();
+            services.AddScoped<IBasketWriteRepository, BasketWriteRepository>();
+            services.AddScoped<IBasketItemReadRepository, BasketItemReadRepository>();
+            services.AddScoped<IBasketItemWriteRepository, BasketItemWriteRepository>();
+
             services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IExternalAuthentication, AuthService>();
             services.AddScoped<IInternalAuthentication, AuthService>();
+
+            services.AddScoped<IBasketService, BasketService>();
+
         }
     }
 }
