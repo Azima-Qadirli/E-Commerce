@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MiniE_Commerce.Persistence.Contexts;
 
@@ -11,9 +12,11 @@ using MiniE_Commerce.Persistence.Contexts;
 namespace MiniE_Commerce.Persistence.Migrations
 {
     [DbContext(typeof(MiniE_CommerceDbContext))]
-    partial class MiniE_CommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250220195358_mig_3")]
+    partial class mig_3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -354,6 +357,9 @@ namespace MiniE_Commerce.Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("CustomerId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -362,6 +368,8 @@ namespace MiniE_Commerce.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
                 });
@@ -511,6 +519,10 @@ namespace MiniE_Commerce.Persistence.Migrations
 
             modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Order", b =>
                 {
+                    b.HasOne("MiniE_Commerce.Domain.Entities.Customer", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("CustomerId");
+
                     b.HasOne("MiniE_Commerce.Domain.Entities.Basket", "Basket")
                         .WithOne("Order")
                         .HasForeignKey("MiniE_Commerce.Domain.Entities.Order", "Id")
@@ -541,6 +553,11 @@ namespace MiniE_Commerce.Persistence.Migrations
 
                     b.Navigation("Order")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Customer", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("MiniE_Commerce.Domain.Entities.Identity.AppUser", b =>

@@ -62,6 +62,8 @@ namespace MiniE_Commerce.Persistence
 
             services.AddScoped<IBasketService, BasketService>();
 
+            services.AddScoped<IOrderService, OrderService>();
+
         }
     }
 }

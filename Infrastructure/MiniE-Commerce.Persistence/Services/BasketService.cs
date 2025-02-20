@@ -19,6 +19,7 @@ namespace MiniE_Commerce.Persistence.Services
         readonly IBasketItemWriteRepository _basketItemWriteRepository;
         readonly IBasketItemReadRepository _basketItemReadRepository;
         readonly IBasketReadRepository _basketReadRepository;
+
         public BasketService(IHttpContextAccessor contextAccessor, UserManager<AppUser> userManager, IOrderReadRepository orderReadRepository, IBasketWriteRepository basketWriteRepository, IBasketItemWriteRepository basketItemWriteRepository, IBasketItemReadRepository basketItemReadRepository, IBasketReadRepository basketReadRepository)
         {
             _contextAccessor = contextAccessor;
@@ -61,6 +62,15 @@ namespace MiniE_Commerce.Persistence.Services
                 return targetBasket;
             }
             throw new Exception("Immediately error occured!");
+        }
+
+        public Basket? GetUserActiveBasket
+        {
+            get
+            {
+                Basket? basket = ContextUser().Result;
+                return basket;
+            }
         }
 
         public async Task AddItemToBasketAsync(VM_Create_BasketItem basketItem)
