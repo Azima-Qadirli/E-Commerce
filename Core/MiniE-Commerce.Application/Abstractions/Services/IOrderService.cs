@@ -6,5 +6,6 @@ namespace MiniE_Commerce.Application.Abstractions.Services
     {
         Task CreateOrderAsync(CreateOrder order);
         Task<ListOrder> GetAllOrdersAsync(int page, int size);
+        Task<SingleOrder> GetOrderByIdAsync(string id);
     }
 }

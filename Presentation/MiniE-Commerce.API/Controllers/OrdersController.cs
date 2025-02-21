@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MiniE_Commerce.Application.Features.Commands.Order.CreateOrder;
 using MiniE_Commerce.Application.Features.Queries.Order.GetAllOrders;
+using MiniE_Commerce.Application.Features.Queries.Order.GetOrderById;
 
 namespace MiniE_Commerce.API.Controllers
 {
@@ -27,6 +28,13 @@ namespace MiniE_Commerce.API.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetAllOrders([FromQuery] GetAllOrderQueryRequest request)
+        {
+            var response = await _mediator.Send(request);
+            return Ok(response);
+        }
+
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetOrderById([FromRoute] GetOrderByIdQueryRequest request)
         {
             var response = await _mediator.Send(request);
             return Ok(response);
