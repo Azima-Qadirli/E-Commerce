@@ -381,3 +381,90 @@ System.InvalidOperationException: The CORS protocol does not allow specifying a 
 2025-02-16 01:34:08.263 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/_vs/browserLink - 200 null text/javascript; charset=UTF-8 20.1938ms
 2025-02-16 01:34:08.392 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/v1/swagger.json - null null
 2025-02-16 01:34:08.406 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.5691ms
+2025-02-21 19:04:32.042 +04:00 [INF] User profile is available. Using 'C:\Users\test\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-21 19:04:32.217 +04:00 [INF] Now listening on: https://localhost:7130
+2025-02-21 19:04:32.218 +04:00 [INF] Now listening on: http://localhost:5280
+2025-02-21 19:04:32.269 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-21 19:04:32.271 +04:00 [INF] Hosting environment: Development
+2025-02-21 19:04:32.272 +04:00 [INF] Content root path: C:\Users\test\OneDrive\Desktop\Projects\MiniE-Commerce\Presentation\MiniE-Commerce.API
+2025-02-21 19:04:32.712 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger - null null
+2025-02-21 19:04:32.776 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger - 301 0 null 65.5997ms
+2025-02-21 19:04:32.779 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/index.html - null null
+2025-02-21 19:04:32.825 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/index.html - 200 null text/html;charset=utf-8 45.5701ms
+2025-02-21 19:04:32.831 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/swagger-ui.css - null null
+2025-02-21 19:04:32.831 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/swagger-ui-bundle.js - null null
+2025-02-21 19:04:32.831 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/swagger-ui-standalone-preset.js - null null
+2025-02-21 19:04:32.831 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-21 19:04:32.831 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/_vs/browserLink - null null
+2025-02-21 19:04:32.840 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/_framework/aspnetcore-browser-refresh.js - 200 13772 application/javascript; charset=utf-8 8.3835ms
+2025-02-21 19:04:32.845 +04:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-02-21 19:04:32.845 +04:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-02-21 19:04:32.847 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 15.8887ms
+2025-02-21 19:04:32.847 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/swagger-ui.css - 200 152034 text/css 16.1825ms
+2025-02-21 19:04:32.851 +04:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-02-21 19:04:32.853 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 22.0236ms
+2025-02-21 19:04:32.875 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/_vs/browserLink - 200 null text/javascript; charset=UTF-8 43.9777ms
+2025-02-21 19:04:32.981 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/v1/swagger.json - null null
+2025-02-21 19:04:32.997 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/favicon-32x32.png - null null
+2025-02-21 19:04:32.997 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.8988ms
+2025-02-21 19:04:32.999 +04:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-02-21 19:04:33.003 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/favicon-32x32.png - 200 628 image/png 6.4354ms
+2025-02-21 19:04:43.029 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/api/Files/GetBaseUrl - null null
+2025-02-21 19:04:43.049 +04:00 [INF] Executing endpoint 'MiniE_Commerce.API.Controllers.FilesController.GetBaseUrl (MiniE-Commerce.API)'
+2025-02-21 19:04:43.063 +04:00 [INF] Route matched with {action = "GetBaseUrl", controller = "Files"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetBaseUrl() on controller MiniE_Commerce.API.Controllers.FilesController (MiniE-Commerce.API).
+2025-02-21 19:04:43.068 +04:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-02-21 19:04:43.076 +04:00 [INF] Executed action MiniE_Commerce.API.Controllers.FilesController.GetBaseUrl (MiniE-Commerce.API) in 9.8401ms
+2025-02-21 19:04:43.077 +04:00 [INF] Executed endpoint 'MiniE_Commerce.API.Controllers.FilesController.GetBaseUrl (MiniE-Commerce.API)'
+2025-02-21 19:04:43.078 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/api/Files/GetBaseUrl - 200 null application/json; charset=utf-8 48.9493ms
+2025-02-21 19:05:00.404 +04:00 [INF] Request starting HTTP/2 POST https://localhost:7130/api/Orders - application/json 61
+2025-02-21 19:05:00.409 +04:00 [INF] CORS policy execution successful.
+2025-02-21 19:05:00.448 +04:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-02-21 19:05:00.452 +04:00 [INF] AuthenticationScheme: Admin was challenged.
+2025-02-21 19:05:00.453 +04:00 [INF] Request finished HTTP/2 POST https://localhost:7130/api/Orders - 401 0 null 49.5235ms
+2025-02-21 19:06:40.725 +04:00 [INF] Request starting HTTP/2 POST https://localhost:7130/api/Users - application/json 150
+2025-02-21 19:06:40.728 +04:00 [INF] CORS policy execution successful.
+2025-02-21 19:06:40.733 +04:00 [INF] Executing endpoint 'MiniE_Commerce.API.Controllers.UsersController.CreateUser (MiniE-Commerce.API)'
+2025-02-21 19:06:40.742 +04:00 [INF] Route matched with {action = "CreateUser", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateUser(MiniE_Commerce.Application.Features.Commands.User.CreateUser.CreateUserCommandRequest) on controller MiniE_Commerce.API.Controllers.UsersController (MiniE-Commerce.API).
+2025-02-21 19:06:41.377 +04:00 [WRN] No store type was specified for the decimal property 'Price' on entity type 'InvoiceFile'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-21 19:06:41.681 +04:00 [INF] Executed DbCommand (15ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NameSurname], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-02-21 19:06:41.809 +04:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 4000), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = DateTime2), @p15='?' (Size = 4000), @p16='?' (DbType = Boolean), @p17='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NameSurname], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [RefreshToken], [RefreshTokenEndDate], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+2025-02-21 19:06:41.819 +04:00 [INF] Executing OkObjectResult, writing value of type 'MiniE_Commerce.Application.Features.Commands.User.CreateUser.CreateUserCommandResponse'.
+2025-02-21 19:06:41.822 +04:00 [INF] Executed action MiniE_Commerce.API.Controllers.UsersController.CreateUser (MiniE-Commerce.API) in 1077.8618ms
+2025-02-21 19:06:41.823 +04:00 [INF] Executed endpoint 'MiniE_Commerce.API.Controllers.UsersController.CreateUser (MiniE-Commerce.API)'
+2025-02-21 19:06:41.828 +04:00 [INF] Request finished HTTP/2 POST https://localhost:7130/api/Users - 200 null application/json; charset=utf-8 1102.9194ms
+2025-02-21 19:07:02.534 +04:00 [INF] Request starting HTTP/2 POST https://localhost:7130/api/Auth/Login - application/json 59
+2025-02-21 19:07:02.536 +04:00 [INF] CORS policy execution successful.
+2025-02-21 19:07:02.537 +04:00 [INF] Executing endpoint 'MiniE_Commerce.API.Controllers.AuthController.Login (MiniE-Commerce.API)'
+2025-02-21 19:07:02.540 +04:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(MiniE_Commerce.Application.Features.Commands.User.LoginUser.LoginUserCommandRequest) on controller MiniE_Commerce.API.Controllers.AuthController (MiniE-Commerce.API).
+2025-02-21 19:07:02.598 +04:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NameSurname], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-02-21 19:07:02.695 +04:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NameSurname], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenEndDate], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-02-21 19:07:02.716 +04:00 [INF] Executed DbCommand (10ms) [Parameters=[@p17='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p18='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 4000), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = DateTime2), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NameSurname] = @p6, [NormalizedEmail] = @p7, [NormalizedUserName] = @p8, [PasswordHash] = @p9, [PhoneNumber] = @p10, [PhoneNumberConfirmed] = @p11, [RefreshToken] = @p12, [RefreshTokenEndDate] = @p13, [SecurityStamp] = @p14, [TwoFactorEnabled] = @p15, [UserName] = @p16
+OUTPUT 1
+WHERE [Id] = @p17 AND [ConcurrencyStamp] = @p18;
+2025-02-21 19:07:02.721 +04:00 [INF] Executing OkObjectResult, writing value of type 'MiniE_Commerce.Application.Features.Commands.User.LoginUser.LoginUserSuccessCommandResponse'.
+2025-02-21 19:07:02.726 +04:00 [INF] Executed action MiniE_Commerce.API.Controllers.AuthController.Login (MiniE-Commerce.API) in 184.7575ms
+2025-02-21 19:07:02.728 +04:00 [INF] Executed endpoint 'MiniE_Commerce.API.Controllers.AuthController.Login (MiniE-Commerce.API)'
+2025-02-21 19:07:02.729 +04:00 [INF] Request finished HTTP/2 POST https://localhost:7130/api/Auth/Login - 200 null application/json; charset=utf-8 194.5253ms
+2025-02-21 19:07:29.654 +04:00 [INF] Request starting HTTP/2 POST https://localhost:7130/api/Orders - application/json 59
+2025-02-21 19:07:29.657 +04:00 [INF] CORS policy execution successful.
+2025-02-21 19:07:29.659 +04:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-02-21 19:07:29.660 +04:00 [INF] AuthenticationScheme: Admin was challenged.
+2025-02-21 19:07:29.661 +04:00 [INF] Request finished HTTP/2 POST https://localhost:7130/api/Orders - 401 0 null 6.6528ms
