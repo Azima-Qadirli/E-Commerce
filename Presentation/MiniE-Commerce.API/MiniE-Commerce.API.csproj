@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>MiniE_Commerce.API</RootNamespace>
+    <UserSecretsId>0a41c197-a6b3-4d29-a552-724c4b8a47f3</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
