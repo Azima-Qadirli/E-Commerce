@@ -1,5 +1,6 @@
 ﻿using Google.Apis.Auth;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MiniE_Commerce.Application.Abstractions.Services;
@@ -8,6 +9,7 @@ using MiniE_Commerce.Application.DTO;
 using MiniE_Commerce.Application.DTO.Facebook;
 using MiniE_Commerce.Application.Exceptions;
 using MiniE_Commerce.Domain.Entities.Identity;
+using System.Text;
 using System.Text.Json;
 
 namespace MiniE_Commerce.Persistence.Services
@@ -20,7 +22,8 @@ namespace MiniE_Commerce.Persistence.Services
         readonly ITokenHandler _tokenHandler;
         readonly SignInManager<AppUser> _signInManager;
         readonly IUserService _userService;
-        public AuthService(IHttpClientFactory _httpClientFactory, IConfiguration configuration, UserManager<AppUser> userManager, ITokenHandler tokenHandler, SignInManager<AppUser> signInManager, IUserService userService)
+        readonly IMailService _mailService;
+        public AuthService(IHttpClientFactory _httpClientFactory, IConfiguration configuration, UserManager<AppUser> userManager, ITokenHandler tokenHandler, SignInManager<AppUser> signInManager, IUserService userService, IMailService mailService)
         {
             _httpClient = _httpClientFactory.CreateClient();
             _configuration = configuration;
@@ -28,6 +31,7 @@ namespace MiniE_Commerce.Persistence.Services
             _tokenHandler = tokenHandler;
             _signInManager = signInManager;
             _userService = userService;
+            _mailService = mailService;
         }
 
         async Task<Token> CreateUserExternalAsync(AppUser user, string email, string name, UserLoginInfo info, int accessTokenLifeTime)
@@ -126,6 +130,20 @@ namespace MiniE_Commerce.Persistence.Services
             }
             else
                 throw new NotFoundUserException();
+        }
+
+        public async Task PasswordResetAsync(string email)
+        {
+            AppUser user = await _userManager.FindByEmailAsync(email);
+            if (user != null)
+            {
+                string resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                byte[] tokenBytes = Encoding.UTF8.GetBytes(resetToken);
+                resetToken = WebEncoders.Base64UrlEncode(tokenBytes);
+
+                await _mailService.SendPasswordResetMailAsync(email, user.Id, resetToken);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MiniE_Commerce.Application.Abstractions.Services;
 using MiniE_Commerce.Application.Abstractions.Services.Authentications;
@@ -26,7 +27,8 @@ namespace MiniE_Commerce.Persistence
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
-            }).AddEntityFrameworkStores<MiniE_CommerceDbContext>();
+            }).AddEntityFrameworkStores<MiniE_CommerceDbContext>()
+            .AddDefaultTokenProviders();
 
             services.AddScoped<ICustomerReadRepository, CustomerReadRepository>();
             services.AddScoped<ICustomerWriteRepository, CustomerWriteRepository>();
