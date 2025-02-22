@@ -22,7 +22,8 @@ namespace MiniE_Commerce.Application.Features.Queries.Order.GetOrderById
                 BasketItems = data.BasketItems,
                 CreatedDate = data.CreatedDate,
                 Description = data.Description,
-                OrderCode = data.OrderCode
+                OrderCode = data.OrderCode,
+                Completed = data.Completed
             };
         }
     }
