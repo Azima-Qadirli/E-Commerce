@@ -535,3 +535,17 @@ WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
 2025-02-22 19:12:36.184 +04:00 [INF] Executed action MiniE_Commerce.API.Controllers.AuthController.PasswordReset (MiniE-Commerce.API) in 4001.453ms
 2025-02-22 19:12:36.186 +04:00 [INF] Executed endpoint 'MiniE_Commerce.API.Controllers.AuthController.PasswordReset (MiniE-Commerce.API)'
 2025-02-22 19:12:36.186 +04:00 [INF] Request finished HTTP/2 POST https://localhost:7130/api/Auth/reset-password - 200 null application/json; charset=utf-8 4011.6494ms
+2025-02-22 22:19:58.330 +04:00 [INF] User profile is available. Using 'C:\Users\test\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-22 22:19:58.494 +04:00 [INF] Now listening on: https://localhost:7130
+2025-02-22 22:19:58.495 +04:00 [INF] Now listening on: http://localhost:5280
+2025-02-22 22:19:58.551 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-22 22:19:58.552 +04:00 [INF] Hosting environment: Development
+2025-02-22 22:19:58.553 +04:00 [INF] Content root path: C:\Users\test\OneDrive\Desktop\Projects\MiniE-Commerce\Presentation\MiniE-Commerce.API
+2025-02-22 22:19:59.055 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/index.html - null null
+2025-02-22 22:19:59.158 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/index.html - 200 null text/html;charset=utf-8 104.8539ms
+2025-02-22 22:19:59.163 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-22 22:19:59.163 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/_vs/browserLink - null null
+2025-02-22 22:19:59.168 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/_framework/aspnetcore-browser-refresh.js - 200 13772 application/javascript; charset=utf-8 5.0132ms
+2025-02-22 22:19:59.195 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/_vs/browserLink - 200 null text/javascript; charset=UTF-8 31.8137ms
+2025-02-22 22:19:59.298 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/v1/swagger.json - null null
+2025-02-22 22:19:59.317 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.4653ms

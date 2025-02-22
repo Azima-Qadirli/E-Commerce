@@ -5,6 +5,7 @@ using MiniE_Commerce.Application.Features.Commands.User.GoogleLogin;
 using MiniE_Commerce.Application.Features.Commands.User.LoginUser;
 using MiniE_Commerce.Application.Features.Commands.User.PasswordReset;
 using MiniE_Commerce.Application.Features.Commands.User.RefreshTokenLogin;
+using MiniE_Commerce.Application.Features.Commands.User.VerifyResetToken;
 
 namespace MiniE_Commerce.API.Controllers
 {
@@ -49,6 +50,13 @@ namespace MiniE_Commerce.API.Controllers
 
         [HttpPost("reset-password")]
         public async Task<IActionResult> PasswordReset([FromBody] PasswordResetCommandRequest request)
+        {
+            var response = await _mediator.Send(request);
+            return Ok(response);
+        }
+
+        [HttpPost("verify-reset-token")]
+        public async Task<IActionResult> VerifyResetToken([FromBody] VerifyResetTokenCommandRequest request)
         {
             var response = await _mediator.Send(request);
             return Ok(response);

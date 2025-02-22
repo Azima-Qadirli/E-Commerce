@@ -1,6 +1,5 @@
 ﻿using Google.Apis.Auth;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MiniE_Commerce.Application.Abstractions.Services;
@@ -8,8 +7,8 @@ using MiniE_Commerce.Application.Abstractions.Token;
 using MiniE_Commerce.Application.DTO;
 using MiniE_Commerce.Application.DTO.Facebook;
 using MiniE_Commerce.Application.Exceptions;
+using MiniE_Commerce.Application.Helpers;
 using MiniE_Commerce.Domain.Entities.Identity;
-using System.Text;
 using System.Text.Json;
 
 namespace MiniE_Commerce.Persistence.Services
@@ -138,12 +137,20 @@ namespace MiniE_Commerce.Persistence.Services
             if (user != null)
             {
                 string resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
-
-                byte[] tokenBytes = Encoding.UTF8.GetBytes(resetToken);
-                resetToken = WebEncoders.Base64UrlEncode(tokenBytes);
-
+                resetToken = resetToken.UrlEncode();
                 await _mailService.SendPasswordResetMailAsync(email, user.Id, resetToken);
             }
+        }
+
+        public async Task<bool> VerifyResetTokenAsync(string resetToken, string userId)
+        {
+            AppUser user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                resetToken = resetToken.UrlDecode();
+                return await _userManager.VerifyUserTokenAsync(user, _userManager.Options.Tokens.PasswordResetTokenProvider, "ResetPassword", resetToken);
+            }
+            return false;
         }
     }
 }
