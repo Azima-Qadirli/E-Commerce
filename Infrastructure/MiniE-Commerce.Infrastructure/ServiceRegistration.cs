@@ -2,8 +2,10 @@
 using MiniE_Commerce.Application.Abstractions.Services;
 using MiniE_Commerce.Application.Abstractions.Storage;
 using MiniE_Commerce.Application.Abstractions.Token;
+using MiniE_Commerce.Application.Configurations;
 using MiniE_Commerce.Infrastructure.Enums;
 using MiniE_Commerce.Infrastructure.Services;
+using MiniE_Commerce.Infrastructure.Services.Configurations;
 using MiniE_Commerce.Infrastructure.Services.Storage;
 using MiniE_Commerce.Infrastructure.Services.Storage.Azure;
 using MiniE_Commerce.Infrastructure.Services.Storage.Local;
@@ -18,6 +20,7 @@ namespace MiniE_Commerce.Infrastructure
             serviceCollection.AddScoped<IStorageService, StorageService>();
             serviceCollection.AddScoped<ITokenHandler, TokenHandler>();
             serviceCollection.AddScoped<IMailService, MailService>();
+            serviceCollection.AddScoped<IApplicationService, ApplicationService>();
         }
         public static void AddStorage<T>(this IServiceCollection serviceCollection) where T : class, IStorage
         {

@@ -549,3 +549,24 @@ WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
 2025-02-22 22:19:59.195 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/_vs/browserLink - 200 null text/javascript; charset=UTF-8 31.8137ms
 2025-02-22 22:19:59.298 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/v1/swagger.json - null null
 2025-02-22 22:19:59.317 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.4653ms
+2025-02-24 00:54:00.027 +04:00 [INF] User profile is available. Using 'C:\Users\test\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 00:54:00.197 +04:00 [INF] Now listening on: https://localhost:7130
+2025-02-24 00:54:00.198 +04:00 [INF] Now listening on: http://localhost:5280
+2025-02-24 00:54:00.257 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 00:54:00.259 +04:00 [INF] Hosting environment: Development
+2025-02-24 00:54:00.260 +04:00 [INF] Content root path: C:\Users\test\OneDrive\Desktop\Projects\MiniE-Commerce\Presentation\MiniE-Commerce.API
+2025-02-24 00:54:00.674 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/index.html - null null
+2025-02-24 00:54:00.777 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/index.html - 200 null text/html;charset=utf-8 103.7361ms
+2025-02-24 00:54:00.784 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-24 00:54:00.787 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/_vs/browserLink - null null
+2025-02-24 00:54:00.789 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/_framework/aspnetcore-browser-refresh.js - 200 13772 application/javascript; charset=utf-8 5.401ms
+2025-02-24 00:54:00.822 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/_vs/browserLink - 200 null text/javascript; charset=UTF-8 35.7455ms
+2025-02-24 00:54:00.852 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/v1/swagger.json - null null
+2025-02-24 00:54:00.871 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.7758ms
+2025-02-24 00:54:10.483 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/api/AuthorizeServices - null null
+2025-02-24 00:54:10.497 +04:00 [INF] Executing endpoint 'MiniE_Commerce.API.Controllers.AuthorizeServicesController.GetAuthorizeDefinitionEndpoints (MiniE-Commerce.API)'
+2025-02-24 00:54:10.511 +04:00 [INF] Route matched with {action = "GetAuthorizeDefinitionEndpoints", controller = "AuthorizeServices"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAuthorizeDefinitionEndpoints() on controller MiniE_Commerce.API.Controllers.AuthorizeServicesController (MiniE-Commerce.API).
+2025-02-24 00:54:10.520 +04:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[MiniE_Commerce.Application.DTO.Configurations.Menu, MiniE-Commerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-24 00:54:10.527 +04:00 [INF] Executed action MiniE_Commerce.API.Controllers.AuthorizeServicesController.GetAuthorizeDefinitionEndpoints (MiniE-Commerce.API) in 12.9683ms
+2025-02-24 00:54:10.528 +04:00 [INF] Executed endpoint 'MiniE_Commerce.API.Controllers.AuthorizeServicesController.GetAuthorizeDefinitionEndpoints (MiniE-Commerce.API)'
+2025-02-24 00:54:10.529 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/api/AuthorizeServices - 200 null application/json; charset=utf-8 45.8514ms

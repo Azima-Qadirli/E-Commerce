@@ -1,6 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MiniE_Commerce.Application.Consts;
+using MiniE_Commerce.Application.CustomAttributes;
+using MiniE_Commerce.Application.Enums;
 using MiniE_Commerce.Application.Features.Commands.Product.CreateProduct;
 using MiniE_Commerce.Application.Features.Commands.Product.RemoveProduct;
 using MiniE_Commerce.Application.Features.Commands.Product.UpdateProduct;
@@ -40,6 +43,7 @@ namespace MiniE_Commerce.API.Controllers
 
         [HttpGet("[action]/{id}")]
         [Authorize(AuthenticationSchemes = "Admin")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Products, ActionType = ActionType.Reading, Definition = "Get Product Images")]
         public async Task<IActionResult> GetProductImages([FromRoute] GetProductImageQueryRequest request)
         {
             List<GetProductImageQueryResponse> response = await _mediator.Send(request);
@@ -48,6 +52,7 @@ namespace MiniE_Commerce.API.Controllers
 
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Admin")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Products, ActionType = ActionType.Writing, Definition = "Create Product")]
         public async Task<IActionResult> Post(CreateProductCommandRequest request)
         {
             CreateProductCommandResponse response = await _mediator.Send(request);
@@ -56,6 +61,7 @@ namespace MiniE_Commerce.API.Controllers
 
         [HttpPut]
         [Authorize(AuthenticationSchemes = "Admin")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Products, ActionType = ActionType.Updating, Definition = "Updating Product")]
         public async Task<IActionResult> Put(UpdateProductCommandRequest request)
         {
             UpdateProductCommandResponse response = await _mediator.Send(request);
@@ -64,6 +70,7 @@ namespace MiniE_Commerce.API.Controllers
 
         [HttpDelete("{Id}")]
         [Authorize(AuthenticationSchemes = "Admin")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Products, ActionType = ActionType.Deleting, Definition = "Delete Product")]
         public async Task<IActionResult> Delete([FromRoute] RemoveProductCommandRequest request)
         {
             RemoveProductCommandResponse response = await _mediator.Send(request);
@@ -72,6 +79,7 @@ namespace MiniE_Commerce.API.Controllers
 
         [HttpDelete]
         [Authorize(AuthenticationSchemes = "Admin")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Products, ActionType = ActionType.Deleting, Definition = "Delete Product Images")]
         public async Task<IActionResult> DeleteProductImage([FromRoute] RemoveProductImageCommandRequest request, [FromQuery] string imageId)
         {
             request.ImageId = imageId;
@@ -81,6 +89,7 @@ namespace MiniE_Commerce.API.Controllers
 
         [HttpPost("upload")]
         [Authorize(AuthenticationSchemes = "Admin")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Products, ActionType = ActionType.Writing, Definition = "Upload Product File")]
         public async Task<IActionResult> Upload([FromQuery] UploadProductImageCommandRequest request)
         {
             request.Files = Request.Form.Files;
@@ -90,6 +99,7 @@ namespace MiniE_Commerce.API.Controllers
 
         [HttpPut("[action]")]
         [Authorize(AuthenticationSchemes = "Admin")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Products, ActionType = ActionType.Updating, Definition = "Change Show Case")]
         public async Task<IActionResult> ChangeShowCase(ChangeShowCaseImageCommandRequest request)
         {
             ChangeShowCaseImageCommandResponse response = await _mediator.Send(request);
