@@ -50,5 +50,12 @@ namespace MiniE_Commerce.Infrastructure.Services
             mail.AppendLine("\">Click here to request a new password...</a></strong><br><br><span style=\\\"font-size:12px;\\\">Note:If this request has not been made by you, please do not take this email seriously!</span><br><br><br><br>Azima ECommerce");
             await SendMailAsync(to, "ResetPassword", mail.ToString());
         }
+        public async Task SendCompletedOrderMailAsync(string to, string orderCode, DateTime orderDate, string userName)
+        {
+            string mail = $"Dear {userName} Hello!<br>" +
+                $"Your order with {orderCode}, which you placed on {orderDate},has been completed and given to the cargo company.<br>May it be beneficial...";
+            await SendMailAsync(to, $"Your order with {orderCode} has been completed!", mail);
+        }
+
     }
 }
