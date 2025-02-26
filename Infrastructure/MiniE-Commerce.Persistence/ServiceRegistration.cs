@@ -69,6 +69,7 @@ namespace MiniE_Commerce.Persistence
 
             services.AddScoped<IOrderService, OrderService>();
 
+            services.AddScoped<IRoleService, RoleService>();
         }
     }
 }
