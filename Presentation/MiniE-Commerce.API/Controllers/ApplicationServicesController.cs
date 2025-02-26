@@ -5,11 +5,11 @@ namespace MiniE_Commerce.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthorizeServicesController : ControllerBase
+    public class ApplicationServicesController : ControllerBase
     {
         readonly IApplicationService _applicationService;
 
-        public AuthorizeServicesController(IApplicationService applicationService)
+        public ApplicationServicesController(IApplicationService applicationService)
         {
             _applicationService = applicationService;
         }
