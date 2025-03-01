@@ -15,7 +15,7 @@ namespace MiniE_Commerce.Persistence.Services
 
         public async Task<bool> CreateRole(string name)
         {
-            IdentityResult result = await _roleManager.CreateAsync(new() { Name = name });
+            IdentityResult result = await _roleManager.CreateAsync(new() { Id = Guid.NewGuid().ToString(), Name = name });
             return result.Succeeded;
         }
 
@@ -26,9 +26,15 @@ namespace MiniE_Commerce.Persistence.Services
             return result.Succeeded;
         }
 
-        public IDictionary<string, string> GetAllRoles()
+        public (object, int) GetAllRoles(int page, int size)
         {
-            return _roleManager.Roles.ToDictionary(role => role.Id, role => role.Name);
+            var query = _roleManager.Roles;
+            IQueryable<AppRole> rolesQuery = null;
+            if (page != -1 && size != -1)
+                rolesQuery = query.Skip(page * size).Take(size);
+            else
+                rolesQuery = query;
+            return (rolesQuery.Select(r => new { r.Id, r.Name, }), query.Count());
         }
 
         public async Task<(string id, string name)> GetRoleById(string id)

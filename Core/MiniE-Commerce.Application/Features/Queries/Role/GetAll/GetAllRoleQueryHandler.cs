@@ -1,12 +1,25 @@
 ﻿using MediatR;
+using MiniE_Commerce.Application.Abstractions.Services;
 
 namespace MiniE_Commerce.Application.Features.Queries.Role.GetAll
 {
     public class GetAllRoleQueryHandler : IRequestHandler<GetAllRoleQueryRequest, GetAllRoleQueryResponse>
     {
-        public Task<GetAllRoleQueryResponse> Handle(GetAllRoleQueryRequest request, CancellationToken cancellationToken)
+        readonly IRoleService _roleService;
+
+        public GetAllRoleQueryHandler(IRoleService roleService)
         {
-            throw new NotImplementedException();
+            _roleService = roleService;
+        }
+
+        public async Task<GetAllRoleQueryResponse> Handle(GetAllRoleQueryRequest request, CancellationToken cancellationToken)
+        {
+            var (datas, count) = _roleService.GetAllRoles(request.Page, request.Size);
+            return new()
+            {
+                Datas = datas,
+                TotalCount = count
+            };
         }
     }
 }
