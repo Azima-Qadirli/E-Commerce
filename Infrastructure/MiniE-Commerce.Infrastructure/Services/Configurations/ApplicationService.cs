@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
-using MiniE_Commerce.Application.Configurations;
+using MiniE_Commerce.Application.Abstractions.Services.Configurations;
 using MiniE_Commerce.Application.CustomAttributes;
 using MiniE_Commerce.Application.DTO.Configurations;
 using MiniE_Commerce.Application.Enums;

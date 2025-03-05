@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MiniE_Commerce.Application.Abstractions.Services;
+using MiniE_Commerce.Application.Abstractions.Services.Configurations;
 using MiniE_Commerce.Application.Abstractions.Storage;
 using MiniE_Commerce.Application.Abstractions.Token;
-using MiniE_Commerce.Application.Configurations;
 using MiniE_Commerce.Infrastructure.Enums;
 using MiniE_Commerce.Infrastructure.Services;
 using MiniE_Commerce.Infrastructure.Services.Configurations;

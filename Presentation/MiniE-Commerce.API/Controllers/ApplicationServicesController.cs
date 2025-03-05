@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MiniE_Commerce.Application.Configurations;
+using MiniE_Commerce.Application.Abstractions.Services.Configurations;
 using MiniE_Commerce.Application.CustomAttributes;
 using MiniE_Commerce.Application.Enums;
 
