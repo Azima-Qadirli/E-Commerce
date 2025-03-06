@@ -12,5 +12,6 @@ namespace MiniE_Commerce.Application.Abstractions.Services
         int TotalUsersCount { get; }
         Task AssingRoleToUserAsync(string userId, string[] roles);
         Task<string[]> GetRolesToUsersAsync(string userIdOrName);
+        Task<bool> HasRolePermissionToEndpointAsync(string name, string code);
     }
 }
