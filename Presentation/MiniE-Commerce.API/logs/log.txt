@@ -570,3 +570,31 @@ WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
 2025-02-24 00:54:10.527 +04:00 [INF] Executed action MiniE_Commerce.API.Controllers.AuthorizeServicesController.GetAuthorizeDefinitionEndpoints (MiniE-Commerce.API) in 12.9683ms
 2025-02-24 00:54:10.528 +04:00 [INF] Executed endpoint 'MiniE_Commerce.API.Controllers.AuthorizeServicesController.GetAuthorizeDefinitionEndpoints (MiniE-Commerce.API)'
 2025-02-24 00:54:10.529 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/api/AuthorizeServices - 200 null application/json; charset=utf-8 45.8514ms
+2025-03-06 22:16:33.733 +04:00 [INF] User profile is available. Using 'C:\Users\test\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-06 22:16:33.900 +04:00 [INF] Now listening on: https://localhost:7130
+2025-03-06 22:16:33.901 +04:00 [INF] Now listening on: http://localhost:5280
+2025-03-06 22:16:33.953 +04:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-06 22:16:33.956 +04:00 [INF] Hosting environment: Development
+2025-03-06 22:16:33.956 +04:00 [INF] Content root path: C:\Users\test\OneDrive\Desktop\Projects\MiniE-Commerce\Presentation\MiniE-Commerce.API
+2025-03-06 22:16:34.513 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger - null null
+2025-03-06 22:16:34.576 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger - 301 0 null 63.8445ms
+2025-03-06 22:16:34.580 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/index.html - null null
+2025-03-06 22:16:34.623 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/index.html - 200 null text/html;charset=utf-8 43.5957ms
+2025-03-06 22:16:34.629 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/swagger-ui.css - null null
+2025-03-06 22:16:34.629 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/swagger-ui-bundle.js - null null
+2025-03-06 22:16:34.629 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/swagger-ui-standalone-preset.js - null null
+2025-03-06 22:16:34.629 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/_vs/browserLink - null null
+2025-03-06 22:16:34.629 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-06 22:16:34.638 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/_framework/aspnetcore-browser-refresh.js - 200 13772 application/javascript; charset=utf-8 9.5997ms
+2025-03-06 22:16:34.643 +04:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-03-06 22:16:34.643 +04:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-03-06 22:16:34.645 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 16.5353ms
+2025-03-06 22:16:34.645 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/swagger-ui.css - 200 152034 text/css 16.7767ms
+2025-03-06 22:16:34.649 +04:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-03-06 22:16:34.651 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 22.0828ms
+2025-03-06 22:16:34.671 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/_vs/browserLink - 200 null text/javascript; charset=UTF-8 41.84ms
+2025-03-06 22:16:34.776 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/v1/swagger.json - null null
+2025-03-06 22:16:34.793 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7130/swagger/favicon-32x32.png - null null
+2025-03-06 22:16:34.795 +04:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-03-06 22:16:34.796 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/favicon-32x32.png - 200 628 image/png 3.4417ms
+2025-03-06 22:16:34.826 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7130/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 49.8386ms

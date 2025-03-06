@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using MiniE_Commerce.Application.Abstractions.Services;
 using MiniE_Commerce.Application.DTO.User;
 using MiniE_Commerce.Application.Exceptions;
@@ -10,6 +11,7 @@ namespace MiniE_Commerce.Persistence.Services
     public class UserService : IUserService
     {
         readonly UserManager<AppUser> _userManager;
+
 
         public UserService(UserManager<AppUser> userManager)
         {
@@ -61,5 +63,48 @@ namespace MiniE_Commerce.Persistence.Services
                     throw new PasswordChangeFailedException();
             }
         }
+
+        public async Task<List<ListUser>> GetAllUserAsync(int page, int size)
+        {
+            var users = await _userManager.Users
+                .Skip(page * size)
+                .Take(size)
+                .ToListAsync();
+            return users.Select(user => new ListUser
+            {
+                Id = user.Id,
+                Email = user.Email,
+                NameSurname = user.NameSurname,
+                TwoFactorEnabled = user.TwoFactorEnabled,
+                UserName = user.UserName
+            }).ToList();
+        }
+
+        public async Task AssingRoleToUserAsync(string userId, string[] roles)
+        {
+            AppUser user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                var userRoles = await _userManager.GetRolesAsync(user);
+                await _userManager.RemoveFromRolesAsync(user, userRoles);
+
+                await _userManager.AddToRolesAsync(user, roles);
+            }
+        }
+
+        public async Task<string[]> GetRolesToUsersAsync(string userIdOrName)
+        {
+            AppUser user = await _userManager.FindByIdAsync(userIdOrName);
+            if (user == null)
+                await _userManager.FindByNameAsync(userIdOrName);
+            if (user != null)
+            {
+                var userRoles = await _userManager.GetRolesAsync(user);
+                return userRoles.ToArray();
+            }
+            return new string[] { };
+        }
+
+        public int TotalUsersCount => _userManager.Users.Count();
     }
 }
