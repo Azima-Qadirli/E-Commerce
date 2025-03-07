@@ -12,3 +12,4 @@ GoogleLogin
 FaceBookLogin
 Logging with Serilog
 SignalR
+Generation of QrCode

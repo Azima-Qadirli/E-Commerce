@@ -8,6 +8,7 @@ using MiniE_Commerce.Application.Enums;
 using MiniE_Commerce.Application.Features.Commands.Product.CreateProduct;
 using MiniE_Commerce.Application.Features.Commands.Product.RemoveProduct;
 using MiniE_Commerce.Application.Features.Commands.Product.UpdateProduct;
+using MiniE_Commerce.Application.Features.Commands.Product.UpdateStockQrCodeToProduct;
 using MiniE_Commerce.Application.Features.Commands.ProductImageFile.ChangeShowCaseImage;
 using MiniE_Commerce.Application.Features.Commands.ProductImageFile.RemoveProductImage;
 using MiniE_Commerce.Application.Features.Commands.ProductImageFile.UploadProductImage;
@@ -44,6 +45,13 @@ namespace MiniE_Commerce.API.Controllers
         {
             var data = await _productService.QrCodeToProductAsync(productId);
             return File(data, "image/png");
+        }
+
+        [HttpPut("qrCode")]
+        public async Task<IActionResult> UpdateStockQrCodeToProduct(UpdateStockQrCodeToProductCommandRequest request)
+        {
+            var response = await _mediator.Send(request);
+            return Ok(response);
         }
 
         [HttpGet("{Id}")]
