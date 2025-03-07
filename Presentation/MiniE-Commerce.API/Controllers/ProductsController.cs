@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MiniE_Commerce.Application.Abstractions.Services;
 using MiniE_Commerce.Application.Consts;
 using MiniE_Commerce.Application.CustomAttributes;
 using MiniE_Commerce.Application.Enums;
@@ -22,9 +23,13 @@ namespace MiniE_Commerce.API.Controllers
     public class ProductsController : ControllerBase
     {
         readonly IMediator _mediator;
-        public ProductsController(IMediator mediator)
+        readonly ILogger<ProductsController> _logger;
+        readonly IProductService _productService;
+        public ProductsController(IMediator mediator, ILogger<ProductsController> logger, IProductService productService)
         {
             _mediator = mediator;
+            _logger = logger;
+            _productService = productService;
         }
 
         [HttpGet]
@@ -32,6 +37,13 @@ namespace MiniE_Commerce.API.Controllers
         {
             GetAllProductQueryResponse response = await _mediator.Send(request);
             return Ok(response);
+        }
+
+        [HttpGet("qrCode/{productId}")]
+        public async Task<IActionResult> GetQrCodeToProduct([FromRoute] string productId)
+        {
+            var data = await _productService.QrCodeToProductAsync(productId);
+            return File(data, "image/png");
         }
 
         [HttpGet("{Id}")]
@@ -105,5 +117,7 @@ namespace MiniE_Commerce.API.Controllers
             ChangeShowCaseImageCommandResponse response = await _mediator.Send(request);
             return Ok(response);
         }
+
+
     }
 }

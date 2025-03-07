@@ -79,6 +79,8 @@ namespace MiniE_Commerce.Persistence
             services.AddScoped<IRoleService, RoleService>();
 
             services.AddScoped<IAuthorizationEndpointService, AuthorizationEndpointService>();
+
+            services.AddScoped<IProductService, ProductService>();
         }
     }
 }

@@ -21,6 +21,7 @@ namespace MiniE_Commerce.Infrastructure
             serviceCollection.AddScoped<ITokenHandler, TokenHandler>();
             serviceCollection.AddScoped<IMailService, MailService>();
             serviceCollection.AddScoped<IApplicationService, ApplicationService>();
+            serviceCollection.AddScoped<IQrCodeService, QrCodeService>();
         }
         public static void AddStorage<T>(this IServiceCollection serviceCollection) where T : class, IStorage
         {
